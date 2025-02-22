@@ -1,0 +1,63 @@
+
+@ /0000
+LV /0000
+MM /0100
+MM N_SQR
+
+LD ENDERECO
+SC NEXT_ENDE
+
+LOOP LD N_SQR; Inicio do Loop de somas e armazenamento dos quadrados
+SC NEXT_N_SQR 
+
+LD II
+SC NEXT_II
+
+LD ENDERECO
+SC NEXT_ENDE
+SB LIMITE; Verifica se atingiu o ultimo quadrado
+JZ PARADA
+JP LOOP
+
+PARADA HM /0000; Fim loop
+
+
+;Subrotina proximo endereco
+@ /0300
+NEXT_ENDE K /0000
+AD TWO
+MM ENDERECO
+RS NEXT_ENDE
+
+
+;Subrotina do proximo N quadrado
+@ /0200
+NEXT_N_SQR K /0000
+AD ONE
+AD II
+MM N_SQR
+LD ENDERECO
+AD OP_CODE_MM
+MM SAVE_CODE
+LD N_SQR
+SAVE_CODE K /0000
+RS NEXT_N_SQR
+
+
+;Subrotina incremento II
+@ /0400
+NEXT_II K /0000
+ADD TWO
+MM II
+RS NEXT_II
+
+
+;Dados
+@ /0500
+ONE K /0001
+II K /0000
+N_SQR K /0000
+TWO K /0002
+OP_CODE_MM MM /000
+ENDERECO K /0100
+LIMITE K /0180
