@@ -1,0 +1,48 @@
+@ /0000
+SC RETURN_SUM
+HM /0000
+
+
+;Subrotina le e soma e retorna
+RETURN_SUM K /0000
+GD /000
+SB CONVERSOR
+MM X
+GD /000
+GD /000
+SB CONVERSOR
+AD X
+SC CARRY_OUT
+LD SUM
+AD CONVERSOR
+PD /100
+RS RETURN_SUM
+
+;Subrotina carry-out
+CARRY_OUT K /0000
+MM SUM 
+DV SHIFT_1
+ML SHIFT_1 
+MM AUX
+LD SUM 
+SB AUX; Isola o algarismo menos significativo
+
+SB TEN
+JN END_SR; Se negativou nao houve carry out
+LD SUM
+SB TEN
+AD CARRY
+MM SUM
+END_SR RS CARRY_OUT
+
+
+
+@ /0400
+CONVERSOR K /3030
+X K /0000
+SUM K /0000
+SHIFT_1 K /0010
+AUX K /0000
+
+TEN K /000A
+CARRY K /0100
