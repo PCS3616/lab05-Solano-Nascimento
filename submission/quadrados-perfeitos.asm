@@ -47,7 +47,7 @@ RS NEXT_N_SQR
 ;Subrotina incremento II
 @ /0400
 NEXT_II K /0000
-ADD TWO
+AD TWO
 MM II
 RS NEXT_II
 
